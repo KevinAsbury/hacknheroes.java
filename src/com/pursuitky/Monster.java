@@ -3,7 +3,7 @@ package com.pursuitky;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Monster {
+public class Monster implements ISaveable {
     private String name;
     private int hp;
     private int maxhp;
@@ -50,4 +50,21 @@ public class Monster {
         return this.name;
     }
 
+    @Override
+    public ArrayList<String> save() {
+        ArrayList<String> data = new ArrayList<String>();
+        data.add(this.name);
+        data.add(Integer.toString(this.hp));
+        data.add(Integer.toString(this.damage));
+        return data;
+    }
+
+    @Override
+    public void load(ArrayList<String> data) {
+        if (!data.isEmpty()) {
+            this.name = data.get(0);
+            this.hp = Integer.parseInt(data.get(1));
+            this.damage = Integer.parseInt(data.get(2));
+        }
+    }
 }
