@@ -8,14 +8,15 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        ArrayList<String> values = new ArrayList<String>();
-	    Hero hero = new Hero("Conan", 50, 5);
-	    Monster monster = new Monster("Duergar", 40, 6);
+        ArrayList<String> save = new ArrayList<String>();
+        Hero hero = new Hero("Conan", 50, 5);
+        Monster monster = new Monster("Duergar", 40, 6);
         boolean quit = false;
 
         printMenu();
 
         while (!quit) {
+            Combat combat = new Combat();
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
 
@@ -26,16 +27,28 @@ public class Main {
                     quit = true;
                     break;
                 case 1:
-                    values = hero.save();
+                    System.out.println("Name:");
+                    String name = scanner.nextLine().replace("\"","");
+                    System.out.println("Health:");
+                    int health = scanner.nextInt();
+                    System.out.println("Damage:");
+                    int damage = scanner.nextInt();
+
+                    hero = new Hero(name, health, damage);
                     break;
                 case 2:
-                    hero.load(values);
+                    save = hero.save();
                     break;
                 case 3:
-                    Combat.fight(hero, monster);
-                    printMenu();
+                    hero.load(save);
                     break;
                 case 4:
+                    combat.fight(hero, monster);
+                    hero.revive();
+                    monster.revive();
+                    printMenu();
+                    break;
+                case 5:
                     printMenu();
                     break;
             }
@@ -43,10 +56,13 @@ public class Main {
     }
 
     private static void printMenu() {
-        System.out.println("0: Run away little girl!");
-        System.out.println("1: Save Hero");
-        System.out.println("2: Load Hero");
-        System.out.println("3: FIGHT!");
-        System.out.println("4: Print Menu");
+        System.out.println("*******************************");
+        System.out.println("0: Run away!");
+        System.out.println("1: New Hero");
+        System.out.println("2: Save Hero");
+        System.out.println("3: Load Hero");
+        System.out.println("4: FIGHT!");
+        System.out.println("5: Print Menu");
+        System.out.println("*******************************");
     }
 }

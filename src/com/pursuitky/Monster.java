@@ -6,11 +6,13 @@ import java.util.Random;
 public class Monster {
     private String name;
     private int hp;
+    private int maxhp;
     private int damage;
 
     public Monster(String name, int hp, int damage) {
         this.name = name;
         this.hp = hp;
+        this.maxhp = hp;
         this.damage = damage;
     }
 
@@ -21,12 +23,18 @@ public class Monster {
         }
     }
 
+    public void revive() {
+        if (maxhp > 0) {
+            this.hp = this.maxhp;
+        }
+    }
+
     public int getHit(int damage) {
         return this.hp -= damage;
     }
 
     public int getHp() {
-        return hp;
+        return this.hp;
     }
 
     public boolean isAlive() {

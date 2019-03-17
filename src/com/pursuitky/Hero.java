@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Hero implements ISaveable {
     private String name;
     private int hp;
+    private int maxhp;
     private int damage;
 
     public Hero(String name, int hp, int damage) {
         this.name = name;
         this.hp = hp;
+        this.maxhp = hp;
         this.damage = damage;
     }
 
@@ -38,16 +40,30 @@ public class Hero implements ISaveable {
     }
 
     public int getHp() {
-        return hp;
+        return this.hp;
+    }
+
+    public void revive() {
+        if (maxhp > 0) {
+            this.hp = this.maxhp;
+        }
     }
 
     @Override
     public ArrayList<String> save() {
-        return null;
+        ArrayList<String> data = new ArrayList<String>();
+        data.add(this.name);
+        data.add(Integer.toString(this.hp));
+        data.add(Integer.toString(this.damage));
+        return data;
     }
 
     @Override
     public void load(ArrayList<String> data) {
-
+        if (!data.isEmpty()) {
+            this.name = data.get(0);
+            this.hp = Integer.parseInt(data.get(1));
+            this.damage = Integer.parseInt(data.get(2));
+        }
     }
 }
