@@ -32,7 +32,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.print("Hero Name:");
-                    String name = scanner.nextLine().replace("\"","");
+                    String name = scanner.next();
                     System.out.print("Health:");
                     int health = scanner.nextInt();
                     System.out.print("Damage:");
@@ -42,7 +42,7 @@ public class Main {
                     break;
                 case 3:
                     System.out.print("Monster Name:");
-                    name = scanner.nextLine().replace("\"","");
+                    name = scanner.next();
                     System.out.print("Health:");
                     health = scanner.nextInt();
                     System.out.print("Damage:");
