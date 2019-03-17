@@ -50,6 +50,11 @@ public class Hero implements ISaveable {
     }
 
     @Override
+    public String toString() {
+        return String.format("%s is a sight to behold! They have %d health and do %d damage.", this.name, this.hp, this.damage);
+    }
+
+    @Override
     public ArrayList<String> save() {
         ArrayList<String> data = new ArrayList<String>();
         data.add(this.name);

@@ -27,6 +27,9 @@ public class Main {
                     quit = true;
                     break;
                 case 1:
+                    System.out.println(hero.toString());
+                    break;
+                case 2:
                     System.out.println("Name:");
                     String name = scanner.nextLine().replace("\"","");
                     System.out.println("Health:");
@@ -36,19 +39,19 @@ public class Main {
 
                     hero = new Hero(name, health, damage);
                     break;
-                case 2:
+                case 3:
                     save = hero.save();
                     break;
-                case 3:
+                case 4:
                     hero.load(save);
                     break;
-                case 4:
+                case 5:
                     combat.fight(hero, monster);
                     hero.revive();
                     monster.revive();
                     printMenu();
                     break;
-                case 5:
+                case 6:
                     printMenu();
                     break;
             }
@@ -58,11 +61,12 @@ public class Main {
     private static void printMenu() {
         System.out.println("*******************************");
         System.out.println("0: Run away!");
-        System.out.println("1: New Hero");
-        System.out.println("2: Save Hero");
-        System.out.println("3: Load Hero");
-        System.out.println("4: FIGHT!");
-        System.out.println("5: Print Menu");
+        System.out.println("1: Hero Information");
+        System.out.println("2: New Hero");
+        System.out.println("3: Save Hero");
+        System.out.println("4: Load Hero");
+        System.out.println("5: FIGHT!");
+        System.out.println("6: Print Menu");
         System.out.println("*******************************");
     }
 }
