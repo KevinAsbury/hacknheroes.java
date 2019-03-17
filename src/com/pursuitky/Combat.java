@@ -18,4 +18,14 @@ public class Combat {
     public static String score(Hero hero, Monster monster) {
         return String.format("(%s: %d, %s: %d)", hero.getName(), hero.getHp(), monster.getName(), monster.getHp());
     }
+
+    public static void fight(Hero hero, Monster monster) {
+        while (hero.isAlive() && monster.isAlive()) {
+            if (new Random().nextBoolean()) {
+                hero.attack(monster);
+            } else {
+                monster.attack(hero);
+            }
+        }
+    }
 }
